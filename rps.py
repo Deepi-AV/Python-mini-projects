@@ -3,7 +3,9 @@ import sys
 from enum import Enum
 #Rock-Paper-Scissors
 
+game_count=0
 def play_rps():
+
     class RPS(Enum) :
         ROCK= '1'
         PAPER= '2'
@@ -15,16 +17,13 @@ def play_rps():
 
     if playerCh not in valid_inputs:
         print("You entered a wrong input...need to choose from 1,2, or 3")
-        return play_rps
-
+        return play_rps()
     else:
-        
-        # print("You chose "+str(RPS(playerCh)).replace('RPS.',' '))
-        # print("Computer chose "+str(RPS(computerCh)).replace('RPS.',' '))
-        
+
+        global game_count
+        game_count+=1
         print("Computer chose "+RPS(playerCh).name)
         print("Computer chose "+RPS(computerCh).name)
-
 
         if playerCh=='1' and computerCh=='3':
             print("You win!!🎊\n")
@@ -36,17 +35,18 @@ def play_rps():
             print("Tie Game..😲\n")
         else:
             print("Computer Wins..😏\n")
-    
-        while True:
-            will=input("Would you like to continue ? ('Y' for yes 'Q' to quit): ")
-            if will.lower() in ['y','q']:
-                break
-            else:
-                continue
-        if will.lower()=='y':
-            return play_rps()
+
+    while True:
+        will=input("Would you like to continue ? ('Y' for yes 'Q' to quit): ")
+        if will.lower() in ['y','q']:
+            break
         else:
-            return
+            continue
+    if will.lower()=='y':
+        return play_rps()
+    else:
+        print("You played "+str(game_count)+" times")
+        return
 
 
 play_rps()
