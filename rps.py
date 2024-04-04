@@ -37,21 +37,22 @@ def rps(playerName="Player"):
             nonlocal computer_score
             if player=='1' and computer=='3':
                 player_score+=1
-                print(playerName+" win!!🎊\n")
+                return playerName+" win!!🎊\n"
             elif player=='2' and computer=='1':
                 player_score+=1
-                print(playerName+" win!!🎊\n")
+                return playerName+" win!!🎊\n"
             elif player=='3' and computer=='2':
                 player_score+=1
-                print(playerName+" win!!🎊\n")
+                return playerName+" win!!🎊\n"
             elif player==computer:
-                print("Tie Game..😲\n")
+                return "Tie Game..😲\n"
             else:
                 computer_score+=1
-                print("Computer Wins..😏\n")
+                return "Computer Wins..😏\n"
         
         game_count+=1
-        decide_winner(playerCh,computerCh)
+        game_result=decide_winner(playerCh,computerCh)
+        print(game_result)
 
         while True:
             will=input("Would you like to continue ? ('Y' for yes 'Q' to quit): ")
@@ -75,7 +76,8 @@ def rps(playerName="Player"):
         
     return play_rps
 
-play=rps()
+name=input("Enter Player Name: ")
+play=rps(name)
 
 play()
 
