@@ -3,52 +3,81 @@ import sys
 from enum import Enum
 #Rock-Paper-Scissors
 
-game_count=0
-def play_rps():
 
-    class RPS(Enum) :
-        ROCK= '1'
-        PAPER= '2'
-        SCISSORS= '3'
-   
-    valid_inputs = ['1', '2', '3']
-    playerCh=input("\nEnter 1 for Rock\n2 for Paper\n3 for Scissors\n\n")
-    computerCh= random.choice("123")
+def rps(playerName="Player"):
 
-    if playerCh not in valid_inputs:
-        print("You entered a wrong input...need to choose from 1,2, or 3")
-        return play_rps()
-    else:
+    game_count=0
+    player_score=0
+    computer_score=0
 
-        global game_count
-        game_count+=1
-        print("Computer chose "+RPS(playerCh).name)
+    def play_rps():
+
+        nonlocal game_count
+        nonlocal player_score
+        nonlocal computer_score
+
+        class RPS(Enum) :
+            ROCK= '1'
+            PAPER= '2'
+            SCISSORS= '3'
+    
+        valid_inputs = ['1', '2', '3']
+        playerCh=input("\nEnter 1 for Rock\n2 for Paper\n3 for Scissors\n\n")
+        computerCh= random.choice("123")
+
+        if playerCh not in valid_inputs:
+            print("You entered a wrong input...need to choose from 1,2, or 3")
+            return play_rps()
+        
+        print(playerName+" chose "+RPS(playerCh).name)
         print("Computer chose "+RPS(computerCh).name)
 
-        if playerCh=='1' and computerCh=='3':
-            print("You win!!🎊\n")
-        elif playerCh=='2' and computerCh=='1':
-            print("You win!!🎊\n")
-        elif playerCh=='3' and computerCh=='2':
-            print("You win!!🎊\n")
-        elif playerCh==computerCh:
-            print("Tie Game..😲\n")
+        def decide_winner(player,computer):
+            nonlocal player_score
+            nonlocal computer_score
+            if player=='1' and computer=='3':
+                player_score+=1
+                print(playerName+" win!!🎊\n")
+            elif player=='2' and computer=='1':
+                player_score+=1
+                print(playerName+" win!!🎊\n")
+            elif player=='3' and computer=='2':
+                player_score+=1
+                print(playerName+" win!!🎊\n")
+            elif player==computer:
+                print("Tie Game..😲\n")
+            else:
+                computer_score+=1
+                print("Computer Wins..😏\n")
+        
+        game_count+=1
+        decide_winner(playerCh,computerCh)
+
+        while True:
+            will=input("Would you like to continue ? ('Y' for yes 'Q' to quit): ")
+            if will.lower() in ['y','q']:
+                break
+            else:
+                continue
+        if will.lower()=='y':
+            return play_rps()
         else:
-            print("Computer Wins..😏\n")
 
-    while True:
-        will=input("Would you like to continue ? ('Y' for yes 'Q' to quit): ")
-        if will.lower() in ['y','q']:
-            break
-        else:
-            continue
-    if will.lower()=='y':
-        return play_rps()
-    else:
-        print("You played "+str(game_count)+" times")
-        return
+            if(player_score>computer_score):
+                print("Overall Winner "+playerName+" with "+str(player_score)+"/"+str(game_count))
+            elif(computer_score>player_score):
+                print("Overall Winner -COMPUTER with "+str(computer_score)+"/"+str(game_count))
+            else:
+                print("Equal Score "+ playerName+"("+str(player_score)+") COMPUTER("+str(computer_score)+")")
+            return
 
 
-play_rps()
+        
+    return play_rps
+
+play=rps()
+
+play()
+
 
 
