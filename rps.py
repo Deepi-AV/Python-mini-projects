@@ -99,7 +99,7 @@ if __name__=="__main__":
     args=parser.parse_args()
 
     rock_paper_scissors=rps(args.name)
-    print(f"\nWelcome, {args.name}! ")
+   
 
     rock_paper_scissors()
 
