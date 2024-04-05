@@ -76,10 +76,7 @@ def rps(playerName="Player"):
         
     return play_rps
 
-name=input("Enter Player Name: ")
-play=rps(name)
-
-play()
-
+name=input("Player Name: ")
+rock_paper_scisssors=rps(name)
 
 
