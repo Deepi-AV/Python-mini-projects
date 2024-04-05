@@ -7,6 +7,8 @@ def guess_Num(name="Player"):
 
     game_count=0
     player_score=0
+    
+    print(f"Welcome {name} to GUESS-THE-NUMBER!!")
 
     def play_game():
         nonlocal game_count
@@ -49,11 +51,13 @@ def guess_Num(name="Player"):
         if continue_game.lower()=='y':
             return guess_Num()
         else:
-            print("\nThanks for Playing!!..")
-            sys.exit("BYE!\n")
+            print("\nThanks for Playing!!..\n")
+            return
 
     return play_game
     
+
+
 if __name__=="__main__":
     parser= argparse.ArgumentParser(
     description="Personalized Experience with Name of the Player"

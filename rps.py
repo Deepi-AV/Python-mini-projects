@@ -11,7 +11,7 @@ def rps(playerName="Player"):
     player_score=0
     computer_score=0
 
-    print(f"\nWelcome {playerName}!")
+    print(f"\nWelcome {playerName} to ROCK-PAPER-SCISSORS!!")
     
     def play_rps():
 
@@ -74,6 +74,8 @@ def rps(playerName="Player"):
                 print(f"Overall Winner -COMPUTER with {computer_score} / {game_count}")
             else:
                 print(f"Equal Score {playerName} ({player_score}) COMPUTER({computer_score})")
+
+            print("Thanks For playing!!")
             return
 
 
