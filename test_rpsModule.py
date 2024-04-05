@@ -1,4 +1,8 @@
-from rps import rock_paper_scissors
+import rps
 
-rock_paper_scissors()
+play=rps.rps("Deepti")
+play()
+
+# from rps import rock_paper_scissors
+# rock_paper_scissors()
 

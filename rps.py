@@ -80,27 +80,25 @@ def rps(playerName="Player"):
         
     return play_rps
 
-name=input("Enter player name: ")
-rock_paper_scissors=rps(name)
+#rock_paper_scissors=rps()
 
+if __name__=="__main__":
 
-#if __name__=="__main__":
+    import argparse
 
-# import argparse
+    parser=argparse.ArgumentParser(
+        description="Personalized game experience"
+    )
 
-# parser=argparse.ArgumentParser(
-#     description="Personalized game experience"
-# )
+    parser.add_argument(
+        "-n","--name",metavar="name", required=True,help="Provide your name."
+    )
 
-# parser.add_argument(
-#     "-n","--name",metavar="name", required=True,help="Provide your name."
-# )
+    args=parser.parse_args()
 
-# args=parser.parse_args()
+    rock_paper_scissors=rps(args.name)
+    print(f"\nWelcome, {args.name}! ")
 
-# rock_paper_scissors=rps(args.name)
-# print(f"\nWelcome, {args.name}! ")
-
-# rock_paper_scissors()
+    rock_paper_scissors()
 
 
